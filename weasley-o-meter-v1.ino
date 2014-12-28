@@ -1,3 +1,18 @@
+/*
+ * Weasley-o-Meter Location/State Indicator for Spark Core and Internet Button
+ * Jon Davies 2014
+ *
+ * Set a specific position of the indicator with the following Curl command:
+ * curl https://api.spark.io/v1/devices/{device_id}/sfMtp -d access_token={token} -d "args={position}"
+ * Set a random position of the indicator with the following Curl command:
+ * curl https://api.spark.io/v1/devices/{device_id}/sfMtrp -d access_token={token}
+ * 
+ * Where...
+ * {device_id} = The Device ID of the Spark Core (Browse to https://www.spark.io/build/ and select the "Cores" icon)
+ * {token}     = Your Access Token (Browse to https://www.spark.io/build/ and select the "Settings" icon)
+ * {position}  = Zero-based indicator/pixel position from 0 to 10 (total of 11 positions).
+ */
+
 // This #include statement was automatically added by the Spark IDE.
 #include "neopixel/neopixel.h"
 // These #includes added by Jon :)
@@ -20,14 +35,8 @@
 //                     WS2812/WS2812B/TM1803 is GRB order.
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
 
-//cloud code notes
-//use linux command prompt (ssh to jpd.me.uk/fire up linux vm) or install windows version of curl
-//curl --get https://api.spark.io/v1/devices -d access_token=9f3f2a818d5eed693b4ada61e59637421d33cb12
-//curl https://api.spark.io/v1/devices/53ff6a066667574819392567/sfMtrp -d access_token=9f3f2a818d5eed693b4ada61e59637421d33cb12
-//curl https://api.spark.io/v1/devices/53ff6a06666757481992567/sfMtp -d access_token=9f3f2a818d5eed693b4ada61e59637421d33cb12 -d "args=1"
-
-int curPos;
-int destPos;
+int curPos; // Current position of pixel
+int destPos; // Destination position of pixel
 
 void setup() {
     strip.begin();
