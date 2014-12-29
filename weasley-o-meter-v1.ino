@@ -2,15 +2,19 @@
  * Weasley-o-Meter Location/State Indicator for Spark Core and Internet Button
  * Jon Davies 2014
  *
+ * General syntax:
+ * curl https://api.spark.io/v1/devices/{device_id}/{function_name} -d access_token={token} -d "args={args_string}"
  * Set a specific position of the indicator with the following Curl command:
  * curl https://api.spark.io/v1/devices/{device_id}/sfMtp -d access_token={token} -d "args={position}"
  * Set a random position of the indicator with the following Curl command:
  * curl https://api.spark.io/v1/devices/{device_id}/sfMtrp -d access_token={token}
  * 
  * Where...
- * {device_id} = The Device ID of the Spark Core (Browse to https://www.spark.io/build/ and select the "Cores" icon)
- * {token}     = Your Access Token (Browse to https://www.spark.io/build/ and select the "Settings" icon)
- * {position}  = Zero-based indicator/pixel position from 0 to 10 (total of 11 positions).
+ * {device_id}     = The Device ID of the Spark Core (Browse to https://www.spark.io/build/ and select the "Cores" icon)
+ * {function_name} = The name of the exposed function in your Spark Core firmware
+ * {token}         = Your Access Token (Browse to https://www.spark.io/build/ and select the "Settings" icon)
+ * {args_string}   = The arguments to pass to the exposed function
+ * {position}      = Zero-based indicator/pixel position from 0 to 10 (total of 11 positions)
  */
 
 // This #include statement was automatically added by the Spark IDE.
